@@ -9,16 +9,28 @@ namespace ParsingXml
     {
         static void Main(string[] args)
         {
-            XDocument doc = XDocument.Load(@"C:\Users\v-mahahmad.NORTHAMERICA\source\repos\csharpxml4\AddSolutionComponentRequest.xml");
-            IEnumerable<XElement> xElements = doc.Descendants("Member");
+            XDocument xmlDoc = XDocument.Load(@"C:\Users\v-mahahmad.NORTHAMERICA\source\repos\csharpxml4\AddSolutionComponentRequest.xml");
+
+            IEnumerable<XElement> xElements = xmlDoc.Descendants("Member");
+
+            Console.WriteLine("Validating XML documents for missing description\n");
+
             foreach (XElement element in xElements)
             {
                 Console.WriteLine("Member Name: " + element.Attribute("MemberName").Value);
-                var summ = element.Descendants("summary");
-                foreach (var item in summ)
+
+                var summary = element.Descendants("summary");
+
+                foreach (var item in summary)
                 {
-                    
-                    Console.WriteLine("Description: " + item.Value);
+                    if (item.Value == "For internal use only")
+                        Console.WriteLine("Processed successfully.");
+
+                    else if (!String.IsNullOrEmpty(item.Value))
+                        Console.WriteLine("This class has summary. Processed successfully.");
+
+                    else
+                        Console.WriteLine("This class is missing description.");
                 }
             }
             Console.ReadKey();
