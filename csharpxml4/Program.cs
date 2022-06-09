@@ -20,7 +20,7 @@ namespace ParsingXml
             // For loop to iterate through each MemberName attribute
             foreach (XElement element in xElements)
             {
-                // Output Member Name to console
+                // Output MemberName values to console
                 Console.WriteLine("Member Name: " + element.Attribute("MemberName").Value);
 
                 // summary variable to store elements under summary
@@ -31,15 +31,15 @@ namespace ParsingXml
                 {
                     // If description says For internal use only, do nothing
                     if (item.Value == "For internal use only")
-                        Console.WriteLine("Processed successfully.");
+                        Console.WriteLine("Processed successfully.\n");
 
                     // If description is not empty, output a message
                     else if (!String.IsNullOrEmpty(item.Value))
-                        Console.WriteLine("This class has summary. Processed successfully.");
+                        Console.WriteLine("This class has summary. Processed successfully.\n");
 
                     // Otherwise, if description is empty, print out a message
                     else
-                        Console.WriteLine("This class is missing description.");
+                        Console.WriteLine("This class is missing description.\n");
                 }
             }
             Console.ReadKey();
