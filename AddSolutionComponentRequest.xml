@@ -1,0 +1,261 @@
+<Type Name="AddSolutionComponentRequest" FullName="Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest">
+  <TypeSignature Language="C++ CLI" Value="public ref class AddSolutionComponentRequest sealed : Microsoft::Xrm::Sdk::OrganizationRequest" />
+  <TypeSignature Language="C#" Value="public sealed class AddSolutionComponentRequest : Microsoft.Xrm.Sdk.OrganizationRequest" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit AddSolutionComponentRequest extends Microsoft.Xrm.Sdk.OrganizationRequest" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class AddSolutionComponentRequest&#xA;Inherits OrganizationRequest" />
+  <TypeSignature Language="F#" Value="type AddSolutionComponentRequest = class&#xA;    inherit OrganizationRequest" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.Crm.Sdk.Proxy</AssemblyName>
+    <AssemblyVersion>9.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.Xrm.Sdk.OrganizationRequest</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName Language="C#">[System.Runtime.Serialization.DataContract(Namespace="http://schemas.microsoft.com/crm/2011/Contracts")]</AttributeName>
+      <AttributeName Language="F#">[&lt;System.Runtime.Serialization.DataContract(Namespace="http://schemas.microsoft.com/crm/2011/Contracts")&gt;]</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>
+      <para>Contains the data that is needed to add a solution component to an unmanaged solution.</para>
+      <para>For the Web API use the AddSolutionComponent Action.</para>
+    </summary>
+    <remarks>
+      <para>
+            Message Availability
+          </para>
+      <para>
+            For this message to work, the caller must be connected to the server.
+          </para>
+      <para>
+            Usage
+          </para>
+      <para>Pass an instance of this class to the <see cref="M:Microsoft.Xrm.Sdk.IOrganizationService.Execute(Microsoft.Xrm.Sdk.OrganizationRequest)" /> method, which returns an instance of <see cref="T:Microsoft.Crm.Sdk.Messages.AddSolutionComponentResponse" /> class.</para>
+      <para>
+            Privileges and Access Rights
+          </para>
+      <para>To perform this action, the caller must have the privileges that are listed in AddSolutionComponent message privileges.</para>
+      <para>
+            Notes for Callers
+          </para>
+      <para>The <see langword="componenttype" /> enumeration defines the supported range of values for this property. You can access the available values by including the  SampleCode\CS\HelperCode\OptionSets.cs file or the SampleCode\VB\HelperCode\OptionSets.vb file in your project.</para>
+      <para>An alternative to using this message is to create or update the solution component for a specific solution. When you use this technique, you add the solution component to both the default solution and the specified solution. You can implement the specific-solution technique in two ways. </para>
+      <list type="bullet">
+        <item>
+          <description>
+            <para>Use the <paramref name="SolutionUniqueName" /> parameter on the solution component create and update requests.</para>
+          </description>
+        </item>
+        <item>
+          <description>
+            <para>Pass the <paramref name="SolutionUniqueName" /> optional parameter to the <see cref="T:Microsoft.Xrm.Sdk.Messages.CreateRequest" /> or <see cref="T:Microsoft.Xrm.Sdk.Messages.UpdateRequest" />.</para>
+          </description>
+        </item>
+      </list>Use the <paramref name="SolutionUniqueName" /> parameter on the solution component create and update requests.<para>For solution components that have a create or update request message that includes the <see langword="SolutionUniqueName" /> property, passing the unique name of the solution adds the solution component to that solution. The following messages include a <see langword="SolutionUniqueName" /> property:</para><list type="bullet"><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.CreateAttributeRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.UpdateAttributeRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.CreateEntityRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.UpdateEntityRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.CreateManyToManyRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.CreateOneToManyRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.UpdateRelationshipRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.CreateOptionSetRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.UpdateOptionSetRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.UpdateOptionValueRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.InsertOptionValueRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.InsertStatusValueRequest" /></para></description></item><item><description><para><see cref="T:Microsoft.Xrm.Sdk.Messages.OrderOptionRequest" /></para></description></item></list>Pass the <paramref name="SolutionUniqueName" /> optional parameter to the <see cref="T:Microsoft.Xrm.Sdk.Messages.CreateRequest" /> or <see cref="T:Microsoft.Xrm.Sdk.Messages.UpdateRequest" />.<para>For other solution components, add “SolutionUniqueName” as a parameter to the <see cref="P:Microsoft.Xrm.Sdk.OrganizationRequest.Parameters" /> property when you use the <see cref="T:Microsoft.Xrm.Sdk.Messages.CreateRequest" /> or <see cref="T:Microsoft.Xrm.Sdk.Messages.UpdateRequest" /> messages.  For more information, see 218d9d80-fb52-49a4-9208-b72675080451#bkmk_optional_params.</para><para>
+            Supported Entities
+          </para><para>This message can only be used for valid solution components.</para><para>
+            Adding Application Ribbons to a Solution.
+          </para><para>When you use <see langword="AddSolutionComponentRequest" /> to add application ribbons to your solution, you must make sure to include the RibbonCustomization solution component that is associated with the active solution. Use the <see langword="Active Solution.SolutionId" /> in the query expression you use to retrieve the RibbonCustomization record.</para><code language="c#">QueryExpression query = new QueryExpression("ribboncustomization");
+query.ColumnSet = new ColumnSet("ribboncustomizationid");
+query.Criteria = new FilterExpression();
+query.Criteria.AddCondition("entity", ConditionOperator.Null);
+query.Criteria.AddCondition("solutionid", ConditionOperator.Equal, new Guid("{FD140AAE-4DF4-11DD-BD17-0019B9312238}"));
+RetrieveMultipleRequest req = new RetrieveMultipleRequest();
+req.Query = query;
+RetrieveMultipleResponse resp = (RetrieveMultipleResponse)_context.Execute(req);
+RibbonCustomization activeRibbonCustomization = (RibbonCustomization)resp.EntityCollection[0];</code></remarks>
+    <example>
+      <para>The following example shows how to use this message. For this sample to work correctly, you must be connected to the server to get an <see cref="T:Microsoft.Xrm.Sdk.IOrganizationService" /> interface. For the complete sample, see the link later in this topic.</para>
+      <para>The following code example adds the account entity to a solution that is specified in the <see cref="P:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.SolutionUniqueName" /> property.</para>
+      <codeReference>Solutions#WorkWithSolutions5</codeReference>
+    </example>
+    <altmember cref="T:Microsoft.Crm.Sdk.Messages.AddSolutionComponentResponse" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; AddSolutionComponentRequest();" />
+      <MemberSignature Language="C#" Value="public AddSolutionComponentRequest ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Crm.Sdk.Proxy</AssemblyName>
+        <AssemblyVersion>9.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>
+          <para>Initializes a new instance of the <see cref="T:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest" /> class.</para>
+        </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AddRequiredComponents">
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property bool AddRequiredComponents { bool get(); void set(bool value); };" />
+      <MemberSignature Language="C#" Value="public bool AddRequiredComponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AddRequiredComponents" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.AddRequiredComponents" />
+      <MemberSignature Language="VB.NET" Value="Public Property AddRequiredComponents As Boolean" />
+      <MemberSignature Language="F#" Value="member this.AddRequiredComponents : bool with get, set" Usage="Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.AddRequiredComponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Crm.Sdk.Proxy</AssemblyName>
+        <AssemblyVersion>9.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Gets or sets a value that indicates whether other solution components that are required by the solution component that you are adding should also be added to the unmanaged solution. Required.</para>
+        </summary>
+        <value>
+          <para>Type: <see href="https://msdn.microsoft.com/library/system.boolean.aspx">Boolean</see>true if the components that are required by the solution component you are adding should also be added to the unmanaged solution; otherwise, false.</para>
+        </value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ComponentId">
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property Guid ComponentId { Guid get(); void set(Guid value); };" />
+      <MemberSignature Language="C#" Value="public Guid ComponentId { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Guid ComponentId" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.ComponentId" />
+      <MemberSignature Language="VB.NET" Value="Public Property ComponentId As Guid" />
+      <MemberSignature Language="F#" Value="member this.ComponentId : Guid with get, set" Usage="Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.ComponentId" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Crm.Sdk.Proxy</AssemblyName>
+        <AssemblyVersion>9.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Guid</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Gets or sets the ID of the solution component. Required.</para>
+        </summary>
+        <value>
+          <para>Type: <see href="https://msdn.microsoft.com/library/system.guid.aspx">Guid</see>
+The ID of the solution component.</para>
+        </value>
+        <remarks>
+          <para>For solution components that derive from <see cref="T:Microsoft.Xrm.Sdk.Metadata.MetadataBase" />, this value is the <see cref="P:Microsoft.Xrm.Sdk.Metadata.MetadataBase.MetadataId" /> property.</para>
+          <para>For other solution components, use the property that is the unique identifier for the entity.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ComponentType">
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property int ComponentType { int get(); void set(int value); };" />
+      <MemberSignature Language="C#" Value="public int ComponentType { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ComponentType" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.ComponentType" />
+      <MemberSignature Language="VB.NET" Value="Public Property ComponentType As Integer" />
+      <MemberSignature Language="F#" Value="member this.ComponentType : int with get, set" Usage="Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.ComponentType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Crm.Sdk.Proxy</AssemblyName>
+        <AssemblyVersion>9.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Gets or sets the value that represents the solution component that you are adding. Required.</para>
+        </summary>
+        <value>
+          <para>Type: <see href="https://msdn.microsoft.com/library/system.int32.aspx">Int32</see>
+The integer value of the <see langword="componenttype" /> enumeration.</para>
+        </value>
+        <remarks>
+          <para>An enumeration named <see langword="componenttype" /> that defines the supported range of values for this property is available by including the file <see langword="SampleCode\CS\HelperCode\OptionSets.cs" /> or <see langword="SampleCode\VB\HelperCode\OptionSets.vb" /> in your project. These values are defined by the global option set Component Type (componenttype).</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoNotIncludeSubcomponents">
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property bool DoNotIncludeSubcomponents { bool get(); void set(bool value); };" />
+      <MemberSignature Language="C#" Value="public bool DoNotIncludeSubcomponents { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNotIncludeSubcomponents" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.DoNotIncludeSubcomponents" />
+      <MemberSignature Language="VB.NET" Value="Public Property DoNotIncludeSubcomponents As Boolean" />
+      <MemberSignature Language="F#" Value="member this.DoNotIncludeSubcomponents : bool with get, set" Usage="Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.DoNotIncludeSubcomponents" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Crm.Sdk.Proxy</AssemblyName>
+        <AssemblyVersion>9.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Indicates whether the subcomponents should be included.</para>
+        </summary>
+        <value>
+          <para>Type: <see href="https://msdn.microsoft.com/library/system.boolean.aspx">Boolean</see>true if you want subcomponents to be included; otherwise, false.</para>
+        </value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncludedComponentSettingsValues">
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property cli::array &lt;System::String ^&gt; ^ IncludedComponentSettingsValues { cli::array &lt;System::String ^&gt; ^ get(); void set(cli::array &lt;System::String ^&gt; ^ value); };" />
+      <MemberSignature Language="C#" Value="public string[] IncludedComponentSettingsValues { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string[] IncludedComponentSettingsValues" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.IncludedComponentSettingsValues" />
+      <MemberSignature Language="VB.NET" Value="Public Property IncludedComponentSettingsValues As String()" />
+      <MemberSignature Language="F#" Value="member this.IncludedComponentSettingsValues : string[] with get, set" Usage="Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.IncludedComponentSettingsValues" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Crm.Sdk.Proxy</AssemblyName>
+        <AssemblyVersion>9.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Gets or sets a value that specifies if the component is added to the solution with its metadata.</para>
+        </summary>
+        <value>
+          <para>Type: <see href="https://msdn.microsoft.com/library/system.string.aspx">String</see>[]When set to <see langword="null" />, the component is added to the solution with metadata; otherwise passing an empty array results in no  metadata settings included with the component.</para>
+        </value>
+        <remarks>
+          <para>A future SDK release will allow you to specify a string [] of metadata settings to include with the component.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SolutionUniqueName">
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property System::String ^ SolutionUniqueName { System::String ^ get(); void set(System::String ^ value); };" />
+      <MemberSignature Language="C#" Value="public string SolutionUniqueName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string SolutionUniqueName" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.SolutionUniqueName" />
+      <MemberSignature Language="VB.NET" Value="Public Property SolutionUniqueName As String" />
+      <MemberSignature Language="F#" Value="member this.SolutionUniqueName : string with get, set" Usage="Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest.SolutionUniqueName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Crm.Sdk.Proxy</AssemblyName>
+        <AssemblyVersion>9.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Gets or sets the unique name of the solution you are adding the solution component to. Required. </para>
+        </summary>
+        <value>
+          <para>Type: <see href="https://msdn.microsoft.com/library/system.string.aspx">String</see>
+The unique name of the solution you are adding the solution component to.</para>
+        </value>
+        <remarks>
+          <para>This value can be found in the <see langword="Solution.UniqueName" /> attribute.</para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
