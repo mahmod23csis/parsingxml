@@ -1,6 +1,8 @@
 ﻿using System.IO;
+using System.Xml;
 using System.Xml.Linq;
 using System.Text;
+
 
 
 namespace ParsingXml
@@ -11,11 +13,14 @@ namespace ParsingXml
         {
             // Load XML file to memory
             XDocument xmlDoc = XDocument.Load(@"C:\Users\v-mahahmad.NORTHAMERICA\source\repos\csharpxml4\AddSolutionComponentRequest.xml");
-
+            
             // Iterable object for Member element children to get all MemberName attributes
             IEnumerable<XElement> xElements = xmlDoc.Descendants("Member");
 
             Console.WriteLine("Validating XML documents for missing description\n");
+
+            // Output the type name to console
+            Console.WriteLine(xmlDoc.Root.Attribute("Name").Value.ToString());
 
             // For loop to iterate through each MemberName attribute
             foreach (XElement element in xElements)
