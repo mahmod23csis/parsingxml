@@ -4,14 +4,14 @@ using System.Xml.Linq;
 using System.Text;
 
 
-namespace ParsingXml
+namespace XmlParser
 {
     class Program
     {
        // private static XDocument xmlDoc;
         static void Main(string[] args)
         {
-            XmlFile f = new XmlFile();
+            Parser parser = new Parser();
 
             Console.Write("Please type your XML Path/URL: ");
             string MyFile = Console.ReadLine();
@@ -20,7 +20,11 @@ namespace ParsingXml
 
             // Handle file error
             // If file doesn't exist or wrong format, prompt again
-            f.ParseFile(MyFile);
+
+            Console.WriteLine("Reporting missing API descriptions\n");
+
+            parser.Parsing(MyFile);
+            parser.Reporting();
 
             Console.ReadKey();
             }
