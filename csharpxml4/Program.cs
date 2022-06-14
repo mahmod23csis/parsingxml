@@ -16,12 +16,11 @@ namespace XmlParser
 
             while (true)
             {
-
                 Console.Write("Please type your XML document name: ");
+                // Example: AddSolutionComponentRequest.xml
                 File_Name = Console.ReadLine();
                 FileInfo fi = new FileInfo(File_Name);
                 string extn = fi.Extension;
-                // "C:\Users\v-mahahmad.NORTHAMERICA\source\repos\csharpxml4\AddSolutionComponentRequest.xml"
                 try
                 {
                     if (extn != ".xml")
@@ -55,13 +54,6 @@ namespace XmlParser
                 }
 
             }
-            // Handle file error
-            // If file doesn't exist or wrong format, prompt again
-
         }
-
-        //XDocument xmlDoc = XDocument.Load(@"C:\Users\v-mahahmad.NORTHAMERICA\source\repos\csharpxml4\AddSolutionComponentRequest.xml");
-        //OpenFile();
-        //XDocument xmlDoc = XDocument.Load(@"C:\Users\v-mahahmad.NORTHAMERICA\source\repos\csharpxml4\AddSolutionComponentRequest.xml");
     }
 }
