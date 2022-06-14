@@ -90,7 +90,7 @@ RibbonCustomization activeRibbonCustomization = (RibbonCustomization)resp.Entity
       <Parameters />
       <Docs>
         <summary>
-          <para>Initializes a new instance of the <see cref="T:Microsoft.Crm.Sdk.Messages.AddSolutionComponentRequest" /> class.</para>
+          <para></para>
         </summary>
         <remarks />
       </Docs>
@@ -246,7 +246,7 @@ The integer value of the <see langword="componenttype" /> enumeration.</para>
       </ReturnValue>
       <Docs>
         <summary>
-          <para>Gets or sets the unique name of the solution you are adding the solution component to. Required. </para>
+          <para>For internal use only</para>
         </summary>
         <value>
           <para>Type: <see href="https://msdn.microsoft.com/library/system.string.aspx">String</see>

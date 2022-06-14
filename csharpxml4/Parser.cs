@@ -8,18 +8,23 @@ namespace XmlParser
 	public class Parser
 	{
         private IEnumerable<XElement> xElements;
+        private string type;
         public void Parsing(string val)
         {
+            // Load XML file to memory
             XDocument xmlDoc = XDocument.Load(val);
 
+            // Iterable object for Member element children to get all MemberName attributes
             xElements = xmlDoc.Descendants("Member");
 
+            type = xmlDoc.Root.Attribute("Name").Value.ToString();
             // Output the type name to console
-            Console.WriteLine("Type: " + xmlDoc.Root.Attribute("Name").Value.ToString() + "\n");
+            Console.WriteLine("Type: " + type + "\n");
         }
 
         public void Reporting()
         {
+            int typeCount = 0;
             // For loop to iterate through each MemberName attribute
             foreach (XElement element in xElements)
             {
@@ -42,13 +47,18 @@ namespace XmlParser
 
                     // If description is not empty, output a message
                     else if (!String.IsNullOrEmpty(item.Value))
-                        Console.WriteLine("This class has summary. Processed successfully.\n");
+                        Console.WriteLine("Type {0} processed...fully documented\n", type);
 
                     // Otherwise, if description is empty, print out a message
-                    else
-                        Console.WriteLine("This class is missing description.\n");
+                    else if (String.IsNullOrEmpty(item.Value))
+                    {
+                        Console.WriteLine("type {0} processed...type description missing\n", type);
+                        typeCount++;
+                    }
+                        
                 }
             }
+            Console.WriteLine("type {0} processed...{1} member(s) missing description(s)", type, typeCount);
             Console.ReadKey();
         }
     }
